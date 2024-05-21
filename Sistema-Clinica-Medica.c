@@ -97,24 +97,28 @@ no* Insere(no* P) {
 }
 
 
-
-
-
-
-
 int main() {
   // Inicialização da Pilha
   no* lista = NULL;
 
-  int opcao;
+  int opcao, menus;
   while (1) {
-    printf("\nMenu:\n");
-    printf("1. Adicionar paciente\n"); 
-    printf("2. Exibir pacientes\n");
-    printf("3. Lista de Atendimentos\n");
-    printf("4. Sair\n");
-    printf("Escolha uma opcaoo: ");
-    scanf("%d", &opcao);
+  	
+  	printf("\nMenus:\n");
+    printf("1. Paciente\n"); 
+    printf("2. Atendimento\n");
+
+    scanf("%d", &menus);
+    
+    if (menus == 1){
+    	do{
+    	printf("\Menu: Paciente:\n");
+	    printf("1. Adicionar paciente\n"); 
+	    printf("2. Exibir pacientes\n");
+	    printf("3. Lista de Atendimentos\n");
+	    printf("4. Voltar\n");
+	    printf("5. Sair\n");
+	    scanf("%d", &opcao);
 
     switch (opcao) {
       case 1:
@@ -125,6 +129,43 @@ int main() {
         break;
       case 3:
         //
+        break;
+      case 4:
+        menus = 0;
+        break;
+      case 5: {
+        no* atual = lista;
+        while (atual != NULL) {
+          no* temp = atual;
+          atual = atual->prox;
+          free(temp);
+        }
+        return 0;
+      }
+      default:
+        printf("Opcao invilida!\n");
+    }
+    
+	}while(menus == 1);
+	
+	}else if(menus == 2){
+		do{
+    	printf("\nMenu: Atendimento\n");
+	    printf("1. Atender Paciente\n"); 
+	    printf("2. Exibir Pacientes\n");
+	    printf("3. Voltar\n");
+	    printf("4. Sair\n");
+	    scanf("%d", &opcao);
+	    
+	    switch (opcao) {
+      case 1:
+        lista = Insere(lista);
+        break;
+      case 2:
+        exibe(lista);
+        break;
+      case 3:
+        menus = 0;
         break;
       case 4: {
         no* atual = lista;
@@ -138,7 +179,10 @@ int main() {
       default:
         printf("Opcao invilida!\n");
     }
-  }
 
+    }while(menus == 2);
+    
+	}
+  }
   return 0;
 }
