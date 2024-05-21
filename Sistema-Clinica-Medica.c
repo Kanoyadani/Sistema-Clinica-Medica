@@ -1,9 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+//-------------------Segundo Menu-----------
+typedef struct sug{
+	int idp;
+	int priori;
+	struct sug* proxi;
+}sug;
 
+
+void atende(){
+	
+};
+
+
+
+
+//-------------------Primereiro Menu-----------
 // Definição da estrutura de um nó da lista
 typedef struct no {
   int id;
+  char nome;
+  char rg;
   int prioridade;
   struct no* prox;
 } no;
@@ -31,7 +48,7 @@ void exibe(no* P) {
 
 
 // Função para inserir um paciente no final da lista
-no* InsereFinal(no* P) {
+no* Insere(no* P) {
   no* novo = (no*)malloc(sizeof(no));
   int Valor;
   if (novo == NULL) {
@@ -63,16 +80,16 @@ no* InsereFinal(no* P) {
   novo->prox = NULL;
 
   if (P == NULL) {
-    // Se a lista está vazia, inicializa a lista com o novo nó
+    // Se a Pilha está vazia, inicializa a lista com o novo nó
     P = novo;
   } else {
-    // Encontra o último nó da lista
+    // Encontra o último nó da Pillha
     no* ultimo = P;
     while (ultimo->prox != NULL) {
       ultimo = ultimo->prox;
     }
 
-    // Conecta o novo nó ao final da lista
+    // Conecta o novo nó ao final da Pilha
     ultimo->prox = novo;
   }
 
@@ -86,11 +103,11 @@ no* InsereFinal(no* P) {
 
 
 int main() {
-  // Inicialização da lista
+  // Inicialização da Pilha
   no* lista = NULL;
 
   int opcao;
-  while (opcao) {
+  while (1) {
     printf("\nMenu:\n");
     printf("1. Adicionar paciente\n"); 
     printf("2. Exibir pacientes\n");
@@ -101,7 +118,7 @@ int main() {
 
     switch (opcao) {
       case 1:
-        lista = InsereFinal(lista);
+        lista = Insere(lista);
         break;
       case 2:
         exibe(lista);
@@ -110,7 +127,6 @@ int main() {
         //
         break;
       case 4: {
-        // Liberar a memória alocada antes de sair
         no* atual = lista;
         while (atual != NULL) {
           no* temp = atual;
@@ -120,7 +136,7 @@ int main() {
         return 0;
       }
       default:
-        printf("Opção inválida!\n");
+        printf("Opcao invilida!\n");
     }
   }
 
