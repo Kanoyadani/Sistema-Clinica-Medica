@@ -1,7 +1,6 @@
 // Data de criação 24/05/2024
 // Integrantes do grupo
-// Rodrigo Ryudi Kanoyadani  RGM 
-// Lucas Sabino de Carvalho  RGM 33676127
+// Rodrigo Ryudi Kanoyadani  RGM 32972814
 // Luan pereira RGM 32827849
 #include <stdio.h>
 #include <stdlib.h>
